@@ -1,0 +1,14 @@
+{
+    "country": "Myanmar",
+    "cases": 176,
+    "todayCases": 0,
+    "deaths": 6,
+    "todayDeaths": 0,
+    "recovered": 62,
+    "active": 108,
+    "critical": 0,
+    "casesPerOneMillion": 3,
+    "deathsPerOneMillion": 0,
+    "totalTests": 10227,
+    "testsPerOneMillion": 188
+}

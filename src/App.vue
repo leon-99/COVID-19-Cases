@@ -74,6 +74,14 @@
             <span class="sr-only">Loading...</span>
           </div>
         </div>
+        <div class="col-md-12 tests --padding-top">
+          <h5>TOTAL TESTS</h5>
+          <h5 class="mm-text">စုစုပေါင်း ဆေးစစ်မှုများ</h5>
+          <h3 v-if="dataText">{{ totalTests }}</h3>
+          <div class="spinner-grow spinner-blue" role="status" v-if="loading">
+            <span class="sr-only">Loading...</span>
+          </div>
+        </div>
       </div>
     </div>
     <footer>
@@ -104,6 +112,7 @@ export default {
       recovered: "",
       totalDeaths: "",
       todayDeaths: "",
+      totalTests: "",
       flagSrc: "",
       profileHref: "https://www.facebook.com/leonzifer"
     };
@@ -118,7 +127,7 @@ export default {
         .then(res => res.json())
         .then(data => {
           this.setData(data);
-          this.updateFlag(data);
+          this.updateFlag(data)
         });
     },
     searchData(e) {
@@ -153,6 +162,7 @@ export default {
       this.recovered = data.recovered;
       this.totalDeaths = data.deaths;
       this.todayDeaths = data.todayDeaths;
+      this.totalTests = data.totalTests;
     },
     updateFlag(data) {
       let reqFlag = data.country;

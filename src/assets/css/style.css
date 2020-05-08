@@ -105,3 +105,7 @@ small {
     text-align: center;
     color: white;
 }
+
+.search:focus {
+    outline: none !important;
+}

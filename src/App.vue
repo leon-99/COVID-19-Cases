@@ -15,7 +15,8 @@
       <div class="row row-1">
         <div class="col-md-12">
           <h3 class="--letter-spacing">
-            COVID-19 Cases
+            <span v-if="title">COVID-19 Cases</span> &nbsp;
+            <span v-if="notFound">Country not found!</span>
             <span v-if="inWord">in</span> &nbsp;
             <span id="country-text">{{ country }}</span>
           </h3>
@@ -47,7 +48,7 @@
           <h5 class="--letter-spacing">ACTIVE CASES</h5>
           <h5 class="mm-text">ကုသဆဲ လူနာများ</h5>
           <h3 v-if="dataText" class="data-numbers">{{ active }}</h3>
-          <div class="spinner-grow spinner-orange" role="status" v-if="loading">
+          <div class="spinner-grow spinner-red" role="status" v-if="loading">
             <span class="sr-only">Loading...</span>
           </div>
         </div>
@@ -75,7 +76,15 @@
             <span class="sr-only">Loading...</span>
           </div>
         </div>
-        <div class="col-md-12 --text-blueish tests --padding-top">
+        <div class="col-md-6 --text-yellow tests --padding-top">
+          <h5 class="--letter-spacing">CRITICAL PATIENTS</h5>
+          <h5 class="mm-text">စိုးရိမ်ရအ‌ခြေအ‌နေရှိသော လူနာများ</h5>
+          <h3 v-if="dataText" class="data-numbers">{{ critical }}</h3>
+          <div class="spinner-grow spinner-yellow" role="status" v-if="loading">
+            <span class="sr-only">Loading...</span>
+          </div>
+        </div>
+        <div class="col-md-6 --text-blueish tests --padding-top">
           <h5 class="--letter-spacing">TOTAL TESTS</h5>
           <h5 class="mm-text">စုစုပေါင်း ဆေးစစ်မှုများ</h5>
           <h3 v-if="dataText" class="data-numbers">{{ totalTests }}</h3>
@@ -106,7 +115,9 @@ export default {
   name: "App",
   data() {
     return {
-      inWord: true,
+      title: false,
+      notFound: false,
+      inWord: false,
       loading: false,
       dataText: false,
       date: "",
@@ -118,6 +129,7 @@ export default {
       totalDeaths: "",
       todayDeaths: "",
       totalTests: "",
+      critical: "",
       flagSrc: "",
       profileHref: "https://www.facebook.com/leonzifer"
     };
@@ -146,7 +158,14 @@ export default {
       fetch(
         `https://coronavirus-19-api.herokuapp.com/countries/${e.target.value}`
       )
-        .then(res => res.json())
+        .then(res => {
+          const contentType = res.headers.get("content-type");
+          if (contentType === "application/json; charset=utf-8") {
+            return res.json();
+          } else {
+            this.showNotFound();
+          }
+        })
         .then(data => {
           this.setData(data);
           this.updateFlag(data);
@@ -159,6 +178,9 @@ export default {
       } else {
         this.country = data.country;
       }
+      this.title = true;
+      this.inWord = true;
+      this.notFound = false;
       this.loading = false;
       this.dataText = true;
       this.cases = data.cases;
@@ -168,6 +190,7 @@ export default {
       this.totalDeaths = data.deaths;
       this.todayDeaths = data.todayDeaths;
       this.totalTests = data.totalTests;
+      this.critical = data.critical;
     },
     updateFlag(data) {
       let reqFlag = data.country;
@@ -183,6 +206,13 @@ export default {
           });
         this.flagSrc = `https://www.countryflags.io/${foundFlag[0].toLowerCase()}/flat/64.png`;
       }
+    },
+    showNotFound() {
+      this.loading = false;
+      this.inWord = false;
+      this.country = "";
+      this.title = false;
+      this.notFound = true;
     }
   },
   mounted() {

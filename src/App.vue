@@ -75,7 +75,7 @@
             <span class="sr-only">Loading...</span>
           </div>
         </div>
-        <div class="col-md-12 --text-blueish --padding-top">
+        <div class="col-md-12 --text-blueish tests --padding-top">
           <h5 class="--letter-spacing">TOTAL TESTS</h5>
           <h5 class="mm-text">စုစုပေါင်း ဆေးစစ်မှုများ</h5>
           <h3 v-if="dataText" class="data-numbers">{{ totalTests }}</h3>

@@ -90,7 +90,7 @@
         Created by
         <a :href="profileHref" class="profile-link">Leon</a> &nbsp;
       </small>
-      <small class="credit-text --letter-spacing" >
+      <small class="credit-text --letter-spacing">
         Icons made by
         <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from
         <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>
@@ -137,7 +137,7 @@ export default {
     },
     searchData(e) {
       if (e.key === "Enter" && e.target.value !== "") {
-          this.getSearchedData(e);
+        this.getSearchedData(e);
       }
     },
     getSearchedData(e) {

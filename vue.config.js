@@ -2,6 +2,7 @@ module.exports = {
   // ...other vue-cli plugin options...
   pwa: {
     name: 'Covid-19 Cases',
+    themeColor: '#000000',
     appleMobileWebAppCapable: 'yes',
     appleMobileWebAppStatusBarStyle: 'black',
     iconPaths: {

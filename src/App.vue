@@ -109,115 +109,17 @@
 </template>
 
 <script>
-import { countryCodes } from "./countryCodes";
-const moment = require("moment");
+import { dataVue } from "./dataVue";
+import { methodsVue } from "./methodsVue";
 export default {
   name: "App",
   data() {
-    return {
-      title: false,
-      notFound: false,
-      inWord: false,
-      loading: false,
-      dataText: false,
-      date: "",
-      country: "",
-      cases: "",
-      todayCases: "",
-      active: "",
-      recovered: "",
-      totalDeaths: "",
-      todayDeaths: "",
-      totalTests: "",
-      critical: "",
-      flagSrc: "",
-      profileHref: "https://www.facebook.com/leonzifer"
-    };
+    return dataVue
   },
-  methods: {
-    setDate() {
-      this.date = moment().format("MMMM Do YYYY");
-    },
-    getData() {
-      this.loading = true;
-      fetch("https://coronavirus-19-api.herokuapp.com/countries/Myanmar")
-        .then(res => res.json())
-        .then(data => {
-          this.setData(data);
-          this.updateFlag(data);
-        });
-    },
-    searchData(e) {
-      if (e.key === "Enter" && e.target.value !== "") {
-        this.getSearchedData(e);
-      }
-    },
-    getSearchedData(e) {
-      this.dataText = false;
-      this.loading = true;
-      fetch(
-        `https://coronavirus-19-api.herokuapp.com/countries/${e.target.value}`
-      )
-        .then(res => {
-          const contentType = res.headers.get("content-type");
-          if (contentType === "application/json; charset=utf-8") {
-            return res.json();
-          } else {
-            this.showNotFound();
-          }
-        })
-        .then(data => {
-          this.setData(data);
-          this.updateFlag(data);
-        });
-    },
-    setData(data) {
-      if (data.country === "World") {
-        this.inWord = false;
-        this.country = "Worldwide";
-      } else {
-        this.country = data.country;
-      }
-      this.title = true;
-      this.inWord = true;
-      this.notFound = false;
-      this.loading = false;
-      this.dataText = true;
-      this.cases = data.cases;
-      this.todayCases = data.todayCases;
-      this.active = data.active;
-      this.recovered = data.recovered;
-      this.totalDeaths = data.deaths;
-      this.todayDeaths = data.todayDeaths;
-      this.totalTests = data.totalTests;
-      this.critical = data.critical;
-    },
-    updateFlag(data) {
-      let reqFlag = data.country;
-      if (reqFlag === "World") {
-        this.flagSrc = "#";
-      } else {
-        const foundFlag = countryCodes
-          .filter(item => {
-            return item.Name === reqFlag;
-          })
-          .map(item => {
-            return item.Code;
-          });
-        this.flagSrc = `https://www.countryflags.io/${foundFlag[0].toLowerCase()}/flat/64.png`;
-      }
-    },
-    showNotFound() {
-      this.loading = false;
-      this.inWord = false;
-      this.country = "";
-      this.title = false;
-      this.notFound = true;
-    }
-  },
+  methods: methodsVue,
   mounted() {
     this.setDate();
-    this.getData();
+    this.getDefaultData();
   }
 };
 </script>

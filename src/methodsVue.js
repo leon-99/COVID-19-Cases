@@ -110,5 +110,17 @@ export const methodsVue = {
         this.country = "";
         this.title = false;
         this.notFound = true;
+    },
+    showVersionChanges() {
+        let versionChangesText = `
+            Version 2.5.0
+            What,s new:
+            1. Now you can search america data with just US,America or USA.
+
+            2. Now you can also search Korea data with Korea or North Korea.
+
+            3. It has this version number and you can see changes.`
+
+        alert(versionChangesText)
     }
 }

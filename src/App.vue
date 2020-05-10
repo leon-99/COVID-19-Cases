@@ -95,6 +95,7 @@
       </div>
     </div>
     <footer>
+      <small uk-toggle="target: #versionChangesModal">v{{ versionNumber }}</small>
       <small class="--letter-spacing">
         Created by
         <a :href="profileHref" class="profile-link">Leon</a> &nbsp;
@@ -105,6 +106,13 @@
         <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>
       </small>
     </footer>
+    <!-- This is the modal -->
+    <div id="versionChangesModal" uk-modal>
+      <div class="uk-modal-dialog uk-modal-body">
+        <h2 class="uk-modal-title"></h2>
+        <button class="uk-modal-close" type="button"></button>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -114,7 +122,7 @@ import { methodsVue } from "./methodsVue";
 export default {
   name: "App",
   data() {
-    return dataVue
+    return dataVue;
   },
   methods: methodsVue,
   mounted() {
@@ -125,6 +133,7 @@ export default {
 </script>
 
 <style lang="css">
+@import url("https://cdn.jsdelivr.net/npm/uikit@3.4.4/dist/css/uikit.min.css");
 @import url("../node_modules/bootstrap/dist/css/bootstrap.min.css");
 @import url("./assets/css/style.css");
 </style>

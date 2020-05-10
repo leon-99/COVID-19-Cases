@@ -1,4 +1,5 @@
 export const dataVue = {
+  versionNumber: "2.5.0",
   title: false,
   notFound: false,
   inWord: false,

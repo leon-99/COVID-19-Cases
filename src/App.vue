@@ -106,13 +106,6 @@
         <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>
       </small>
     </footer>
-    <!-- This is the modal -->
-    <div id="versionChangesModal" uk-modal>
-      <div class="uk-modal-dialog uk-modal-body">
-        <h2 class="uk-modal-title"></h2>
-        <button class="uk-modal-close" type="button"></button>
-      </div>
-    </div>
   </div>
 </template>
 
@@ -133,7 +126,6 @@ export default {
 </script>
 
 <style lang="css">
-@import url("https://cdn.jsdelivr.net/npm/uikit@3.4.4/dist/css/uikit.min.css");
 @import url("../node_modules/bootstrap/dist/css/bootstrap.min.css");
 @import url("./assets/css/style.css");
 </style>

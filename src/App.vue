@@ -2,14 +2,19 @@
   <div id="app">
     <div class="container">
       <div class="row search-row">
-        <div class="col-md-12">
+        <div class="col-md-12 search-inner">
           <input
             type="text"
             name="search"
             class="search"
             placeholder="Search for country"
+            list="countries"
             @keyup="searchData"
+            autocomplete="off"
           />
+          <datalist id="countries">
+            <option v-for="c in countriesList" :key="c">{{ c }}</option>
+          </datalist>
         </div>
       </div>
       <div class="row row-1">
@@ -95,7 +100,7 @@
       </div>
     </div>
     <footer>
-      <small uk-toggle="target: #versionChangesModal">v{{ versionNumber }}</small>
+      <small>v{{ versionNumber }}</small>
       <small class="--letter-spacing">
         Created by
         <a :href="profileHref" class="profile-link">Leon</a> &nbsp;
@@ -121,6 +126,7 @@ export default {
   mounted() {
     this.setDate();
     this.getDefaultData();
+    this.getCountriesList();
   }
 };
 </script>

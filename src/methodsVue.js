@@ -29,6 +29,7 @@ export const methodsVue = {
         if (
             c === "America" ||
             c === "america" ||
+            c === "Us" ||
             c === "US" ||
             c === "us"
         ) {
@@ -70,6 +71,8 @@ export const methodsVue = {
             this.inWord = false;
             this.country = "Worldwide";
             this.totalTests = "N/A";
+        } else if (data.country === "China" && data.totalTests === 0) {
+            this.totalTests = "N/A"
         } else {
             this.inWord = true;
             this.country = data.country;
@@ -111,16 +114,13 @@ export const methodsVue = {
         this.title = false;
         this.notFound = true;
     },
-    showVersionChanges() {
-        let versionChangesText = `
-            Version 2.5.0
-            What,s new:
-            1. Now you can search america data with just US,America or USA.
-
-            2. Now you can also search Korea data with Korea or North Korea.
-
-            3. It has this version number and you can see changes.`
-
-        alert(versionChangesText)
+    getCountriesList() {
+        fetch("https://coronavirus-19-api.herokuapp.com/countries")
+            .then(res => res.json())
+            .then(data => {
+                this.countriesList = data.map(i => {
+                    return i["country"]
+                })
+            });
     }
 }

@@ -112,6 +112,16 @@ small {
     color: yellow;
 }
 
+.search-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.search-row {
+    margin-bottom: 10px;
+}
+
 .search {
     display: block;
     width: 100%;
@@ -124,6 +134,18 @@ small {
 }
 
 .search:focus {
+    outline: none !important;
+}
+
+.get-world-data-btn {
+    background: none;
+    color: white;
+    border: solid 1px white;
+    border-radius: 1px;
+    padding: 7px 10px;
+}
+
+.get-world-data-btn:focus {
     outline: none !important;
 }
 

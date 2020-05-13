@@ -5,7 +5,7 @@ const moment = require("moment");
 export const methodsVue = {
     // set date 
     setDate() {
-        this.date = moment().format("ddd, MMMM Do YYYY");
+        this.date = moment().format("ddd, MMMM D YYYY");
     },
     // get default data
     getDefaultData() {

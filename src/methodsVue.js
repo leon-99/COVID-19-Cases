@@ -53,6 +53,7 @@ export const methodsVue = {
     // get searched data
     getSearchedData(e) {
         this.dataText = false;
+        this.flagSrc = "#";
         this.loading = true;
         fetch(this.filterCountry(e.target.value))
             .then(res => {

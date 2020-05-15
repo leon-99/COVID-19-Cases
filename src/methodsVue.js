@@ -31,7 +31,10 @@ export const methodsVue = {
             c === "america" ||
             c === "Us" ||
             c === "US" ||
-            c === "us"
+            c === "us" ||
+            c === "United States" ||
+            c === "United states" ||
+            c === "united states"
         ) {
             SEARCHED_API_URL = `https://coronavirus-19-api.herokuapp.com/countries/usa`
         } else if (
@@ -73,6 +76,7 @@ export const methodsVue = {
             this.totalTests = "N/A";
         } else if (data.country === "China" && data.totalTests === 0) {
             this.totalTests = "N/A"
+            this.country = "China";
         } else {
             this.inWord = true;
             this.country = data.country;
@@ -93,17 +97,15 @@ export const methodsVue = {
     // update flag
     updateFlag(data) {
         let reqFlag = data.country;
-        if (reqFlag === "World") {
+        // find method
+        const foundFlag = countryCodes.find((country) => {
+            return country.Name === reqFlag
+        });
+        console.log(foundFlag);
+        if (reqFlag === "World" || foundFlag === undefined) {
             this.flagSrc = "#";
         } else {
-            const foundFlag = countryCodes
-                .filter(item => {
-                    return item.Name === reqFlag;
-                })
-                .map(item => {
-                    return item.Code;
-                });
-            this.flagSrc = `https://www.countryflags.io/${foundFlag[0].toLowerCase()}/flat/64.png`;
+            this.flagSrc = `https://www.countryflags.io/${foundFlag.Code.toLowerCase()}/flat/64.png`;
         }
     },
     // show not found
@@ -121,6 +123,7 @@ export const methodsVue = {
                 this.countriesList = data.map(i => {
                     return i["country"]
                 })
+                this.countriesList.push("United States", "America", "US", "Korea", "South Korea")
             });
     }
 }

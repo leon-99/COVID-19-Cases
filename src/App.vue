@@ -33,92 +33,62 @@
         </div>
       </div>
       <div class="row row-2">
-        <div class="col-md-4 --text-red --padding-top">
-          <h5 class="--letter-spacing">CONFIRMED CASES</h5>
-          <h5 class="mm-text">ဗိုင်းရပ်စ်ပိုးကူးစက်ခံရသူများ</h5>
-          <h3 v-if="dataText" class="data-numbers">{{ cases }}</h3>
-          <div class="spinner-grow spinner-red" role="status" v-if="loading">
-            <span class="sr-only">Loading...</span>
-          </div>
-        </div>
-        <div class="col-md-4 --text-red --padding-top">
-          <h5 class="--letter-spacing">TODAY CASES</h5>
-          <h5 class="mm-text">ဒီနေ့ ဗိုင်းရပ်စ်ပိုးကူးစက်ခံရသူများ</h5>
-          <h3 v-if="dataText" class="data-numbers">{{ todayCases }}</h3>
-          <div class="spinner-grow spinner-red" role="status" v-if="loading">
-            <span class="sr-only">Loading...</span>
-          </div>
-        </div>
-        <div class="col-md-4 --text-red --padding-top">
-          <h5 class="--letter-spacing">ACTIVE CASES</h5>
-          <h5 class="mm-text">ကုသဆဲ လူနာများ</h5>
-          <h3 v-if="dataText" class="data-numbers">{{ active }}</h3>
-          <div class="spinner-grow spinner-red" role="status" v-if="loading">
-            <span class="sr-only">Loading...</span>
-          </div>
-        </div>
-        <div class="col-md-4 --text-greenyellow --padding-top">
-          <h5 class="--letter-spacing">RECOVERED</h5>
-          <h5 class="mm-text">ပြန်လည်ကျန်းမာသူများ</h5>
-          <h3 v-if="dataText" class="data-numbers">{{ recovered }}</h3>
-          <div class="spinner-grow spinner-greenyellow" role="status" v-if="loading">
-            <span class="sr-only">Loading...</span>
-          </div>
-        </div>
-        <div class="col-md-4 --text-lightgray --padding-top">
-          <h5 class="--letter-spacing">TOTAL DEATHS</h5>
-          <h5 class="mm-text">စုစုပေါင်းသေဆုံးမှုများ</h5>
-          <h3 v-if="dataText" class="data-numbers">{{ totalDeaths }}</h3>
-          <div class="spinner-grow spinner-gray" role="status" v-if="loading">
-            <span class="sr-only">Loading...</span>
-          </div>
-        </div>
-        <div class="col-md-4 --text-lightgray --padding-top">
-          <h5 class="--letter-spacing">TODAY DEATHS</h5>
-          <h5 class="mm-text">ဒီနေ့ သေဆုံးမှုများ</h5>
-          <h3 v-if="dataText" class="data-numbers">{{ todayDeaths }}</h3>
-          <div class="spinner-grow spinner-gray" role="status" v-if="loading">
-            <span class="sr-only">Loading...</span>
-          </div>
-        </div>
-        <div class="col-md-6 --text-yellow tests --padding-top">
-          <h5 class="--letter-spacing">CRITICAL PATIENTS</h5>
-          <h5 class="mm-text">စိုးရိမ်ရအ‌ခြေအ‌နေရှိသော လူနာများ</h5>
-          <h3 v-if="dataText" class="data-numbers">{{ critical }}</h3>
-          <div class="spinner-grow spinner-yellow" role="status" v-if="loading">
-            <span class="sr-only">Loading...</span>
-          </div>
-        </div>
-        <div class="col-md-6 --text-blueish tests --padding-top">
-          <h5 class="--letter-spacing">TOTAL TESTS</h5>
-          <h5 class="mm-text">စုစုပေါင်း ဆေးစစ်မှုများ</h5>
-          <h3 v-if="dataText" class="data-numbers">{{ totalTests }}</h3>
-          <div class="spinner-grow spinner-blue" role="status" v-if="loading">
-            <span class="sr-only">Loading...</span>
-          </div>
-        </div>
+        <ConfirmedCases :cases="this.cases" :dataText="this.dataText" :loading="this.loading" />
+        <TodayCases :todayCases="this.todayCases" :data-text="this.dataText" :loading="this.loading" />
+        <ActiveCases
+          :active="this.active"
+          :dataText="this.dataText"
+          :loading="this.loading"
+        />
+        <Recovered :recovered="this.recovered" :dataText="this.dataText" :loading="this.loading" />
+        <TotalDeaths
+          :totalDeaths="this.totalDeaths"
+          :dataText="this.dataText"
+          :loading="this.loading"
+        />
+        <TodayDeaths
+          :todayDeaths="this.todayDeaths"
+          :dataText="this.dataText"
+          :loading="this.loading"
+        />
+        <Critical :critical="this.critical" :dataText="this.dataText" :loading="this.loading" />
+        <TotalTests
+          :totalTests="this.totalTests"
+          :dataText="this.dataText"
+          :loading="this.loading"
+        />
       </div>
     </div>
-    <footer>
-      <small>v{{ versionNumber }}</small>
-      <small class="--letter-spacing">
-        Created by
-        <a :href="profileHref" class="profile-link">Leon</a> &nbsp;
-      </small>
-      <small class="credit-text --letter-spacing">
-        Icons made by
-        <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from
-        <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>
-      </small>
-    </footer>
+    <Footer :versionNumber="this.versionNumber" :profileHref="this.profileHref"/>
   </div>
 </template>
 
 <script>
 import { dataVue } from "./dataVue";
 import { methodsVue } from "./methodsVue";
+import ConfirmedCases from "./components/ComfirmedCases";
+import TodayCases from "./components/TodayCases";
+import ActiveCases from "./components/ActiveCases";
+import Recovered from "./components/Recovered";
+import TotalDeaths from "./components/TotalDeaths";
+import TodayDeaths from "./components/TodayDeaths";
+import Critical from "./components/Critical";
+import TotalTests from "./components/TotalTests";
+import Footer from "./components/Footer";
+
 export default {
   name: "App",
+  components: {
+    ConfirmedCases,
+    TodayCases,
+    ActiveCases,
+    Recovered,
+    TotalDeaths,
+    TodayDeaths,
+    Critical,
+    TotalTests,
+    Footer
+  },
   data() {
     return dataVue;
   },

@@ -1,5 +1,6 @@
 export const dataVue = {
   versionNumber: "2.6.7",
+  countriesData: [],
   countriesList: [],
   title: false,
   notFound: false,

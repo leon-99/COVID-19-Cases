@@ -2,7 +2,15 @@ import {
     countryCodes
 } from "./countryCodes";
 const moment = require("moment");
+const Chart = require("chart.js");
 export const methodsVue = {
+    // get all countries
+    async getAllCountries() {
+        let res = await fetch("https://coronavirus-19-api.herokuapp.com/countries")
+        let data = await res.json();
+        this.countriesData = data;
+        this.countriesList = data.map(i => i.country);
+    },
     // set date 
     setDate() {
         this.date = moment().format("ddd, MMMM D YYYY");
@@ -96,7 +104,6 @@ export const methodsVue = {
         const foundFlag = countryCodes.find((country) => {
             return country.Name === reqFlag
         });
-        console.log(foundFlag);
         if (reqFlag === "World" || foundFlag === undefined) {
             this.flagSrc = "#";
         } else {
@@ -111,12 +118,31 @@ export const methodsVue = {
         this.title = false;
         this.notFound = true;
     },
-    async getCountriesList() {
-        let res = await fetch("https://coronavirus-19-api.herokuapp.com/countries")
-        let data = await res.json()
-        this.countriesList = data.map(i => {
-            return i["country"]
-        })
-        this.countriesList.push("United States", "America", "US", "Korea", "South Korea")
-    }
+    createChart() {
+        const sbcc = document.getElementById("situation-by-country-chart").getContext('2d');
+        new Chart(sbcc, {
+          type: "horizontalBar",
+          data: {
+            labels: this.countriesList.slice(1, 10),
+            datasets: [
+              {
+                label: "test",
+                data: this.countriesData.map(i => i.cases).slice(1, 10),
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(255, 159, 64, 0.2)',  
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)'
+                ],
+              }
+            ]
+          }
+        });
+      }
 }

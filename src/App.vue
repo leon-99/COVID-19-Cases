@@ -34,12 +34,12 @@
       </div>
       <div class="row row-2">
         <ConfirmedCases :cases="this.cases" :dataText="this.dataText" :loading="this.loading" />
-        <TodayCases :todayCases="this.todayCases" :data-text="this.dataText" :loading="this.loading" />
-        <ActiveCases
-          :active="this.active"
-          :dataText="this.dataText"
+        <TodayCases
+          :todayCases="this.todayCases"
+          :data-text="this.dataText"
           :loading="this.loading"
         />
+        <ActiveCases :active="this.active" :dataText="this.dataText" :loading="this.loading" />
         <Recovered :recovered="this.recovered" :dataText="this.dataText" :loading="this.loading" />
         <TotalDeaths
           :totalDeaths="this.totalDeaths"
@@ -58,12 +58,14 @@
           :loading="this.loading"
         />
       </div>
+      <SituationWorldwide />
     </div>
-    <Footer :versionNumber="this.versionNumber" :profileHref="this.profileHref"/>
+    <Footer :versionNumber="this.versionNumber" :profileHref="this.profileHref" />
   </div>
 </template>
 
 <script>
+/* eslint-disable */
 import { dataVue } from "./dataVue";
 import { methodsVue } from "./methodsVue";
 import ConfirmedCases from "./components/ComfirmedCases";
@@ -75,6 +77,7 @@ import TodayDeaths from "./components/TodayDeaths";
 import Critical from "./components/Critical";
 import TotalTests from "./components/TotalTests";
 import Footer from "./components/Footer";
+import SituationWorldwide from "./components/SituationWorldwide";
 
 export default {
   name: "App",
@@ -87,6 +90,7 @@ export default {
     TodayDeaths,
     Critical,
     TotalTests,
+    SituationWorldwide,
     Footer
   },
   data() {
@@ -95,8 +99,9 @@ export default {
   methods: methodsVue,
   mounted() {
     this.setDate();
-    this.getDefaultData();
-    this.getCountriesList();
+    this.getDefaultData()
+    this.getAllCountries();
+    this.createChart();
   }
 };
 </script>

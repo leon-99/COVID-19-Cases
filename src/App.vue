@@ -58,7 +58,7 @@
           :loading="this.loading"
         />
       </div>
-      <SituationWorldwide />
+      <!-- <SituationWorldwide /> -->
     </div>
     <Footer :versionNumber="this.versionNumber" :profileHref="this.profileHref" />
   </div>
@@ -77,7 +77,7 @@ import TodayDeaths from "./components/TodayDeaths";
 import Critical from "./components/Critical";
 import TotalTests from "./components/TotalTests";
 import Footer from "./components/Footer";
-import SituationWorldwide from "./components/SituationWorldwide";
+// import SituationWorldwide from "./components/SituationWorldwide";
 
 export default {
   name: "App",
@@ -90,7 +90,7 @@ export default {
     TodayDeaths,
     Critical,
     TotalTests,
-    SituationWorldwide,
+    // SituationWorldwide,
     Footer
   },
   data() {
@@ -98,10 +98,10 @@ export default {
   },
   methods: methodsVue,
   mounted() {
-    this.setDate();
-    this.getDefaultData()
     this.getAllCountries();
-    this.createChart();
+    this.setDate();
+    // this.getDefaultData();
+    // this.createChart();
   }
 };
 </script>

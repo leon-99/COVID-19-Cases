@@ -2,26 +2,27 @@ import {
     countryCodes
 } from "./countryCodes";
 const moment = require("moment");
-const Chart = require("chart.js");
+// const Chart = require("chart.js");
 export const methodsVue = {
     // get all countries
     async getAllCountries() {
+        this.loading = true;
         let res = await fetch("https://coronavirus-19-api.herokuapp.com/countries")
         let data = await res.json();
         this.countriesData = data;
         this.countriesList = data.map(i => i.country);
+
+        this.getDefaultData();
     },
     // set date 
     setDate() {
         this.date = moment().format("ddd, MMMM D YYYY");
     },
     // get default data
-    async getDefaultData() {
+    getDefaultData() {
         this.loading = true;
-        let res = await fetch("https://coronavirus-19-api.herokuapp.com/countries/Myanmar")
-        let data = await res.json()
-        this.setData(data);
-        this.updateFlag(data);
+        this.setData(this.countriesData.find(i => i.country === "Myanmar"));
+        this.updateFlag(this.countriesData.find(i => i.country === "Myanmar"));
     },
     // search data
     searchData(e) {
@@ -31,7 +32,7 @@ export const methodsVue = {
     },
     // filter searched country
     filterCountry(c) {
-        let SEARCHED_API_URL
+        let SEARCHED_COUNTRY;
         if (
             c === "America" ||
             c === "america" ||
@@ -42,7 +43,7 @@ export const methodsVue = {
             c === "United states" ||
             c === "united states"
         ) {
-            SEARCHED_API_URL = `https://coronavirus-19-api.herokuapp.com/countries/usa`
+            SEARCHED_COUNTRY = this.countriesData.find(i => i.country === "Usa");
         } else if (
             c === "korea" ||
             c === "Korea" ||
@@ -50,23 +51,21 @@ export const methodsVue = {
             c === "south korea" ||
             c === "South korea"
         ) {
-            SEARCHED_API_URL = `https://coronavirus-19-api.herokuapp.com/countries/S. Korea`
+            SEARCHED_COUNTRY = this.countriesData.find(i => i.country === "S. Korea");
         } else {
-            SEARCHED_API_URL = `https://coronavirus-19-api.herokuapp.com/countries/${c}`
+            SEARCHED_COUNTRY = this.countriesData.find(i => i.country === c);
         }
-        return SEARCHED_API_URL;
+        return SEARCHED_COUNTRY;
     },
     // get searched data
     async getSearchedData(e) {
         this.dataText = false;
         this.flagSrc = "#";
         this.loading = true;
-        let res = await fetch(this.filterCountry(e.target.value))
-        const contentType = res.headers.get("content-type");
-        if (contentType === "application/json; charset=utf-8") {
-            let data = await res.json()
-            this.setData(data);
-            this.updateFlag(data);
+        
+        if (this.filterCountry(e.target.value) !== undefined) {
+            this.setData(this.filterCountry(e.target.value));
+            this.updateFlag(this.filterCountry(e.target.value));
         } else {
             this.showNotFound();
         }
@@ -118,31 +117,31 @@ export const methodsVue = {
         this.title = false;
         this.notFound = true;
     },
-    createChart() {
-        const sbcc = document.getElementById("situation-by-country-chart").getContext('2d');
-        new Chart(sbcc, {
-          type: "horizontalBar",
-          data: {
-            labels: this.countriesList.slice(1, 10),
-            datasets: [
-              {
-                label: "test",
-                data: this.countriesData.map(i => i.cases).slice(1, 10),
-                backgroundColor: [
-                    'rgba(255, 99, 132, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(255, 206, 86, 0.2)',
-                    'rgba(75, 192, 192, 0.2)',
-                    'rgba(153, 102, 255, 0.2)',
-                    'rgba(255, 159, 64, 0.2)',  
-                    'rgba(255, 99, 132, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(255, 206, 86, 0.2)',
-                    'rgba(75, 192, 192, 0.2)'
-                ],
-              }
-            ]
-          }
-        });
-      }
+    // createChart() {
+    //     const sbcc = document.getElementById("situation-by-country-chart").getContext('2d');
+    //     new Chart(sbcc, {
+    //       type: "pie",
+    //       data: {
+    //         labels: this.countriesList.slice(1, 10),
+    //         datasets: [
+    //           {
+    //             label: "test",
+    //             data: this.countriesData.map(i => i.cases).slice(1, 10),
+    //             backgroundColor: [
+    //                 'rgba(255, 99, 132, 0.2)',
+    //                 'rgba(54, 162, 235, 0.2)',
+    //                 'rgba(255, 206, 86, 0.2)',
+    //                 'rgba(75, 192, 192, 0.2)',
+    //                 'rgba(153, 102, 255, 0.2)',
+    //                 'rgba(255, 159, 64, 0.2)',  
+    //                 'rgba(255, 99, 132, 0.2)',
+    //                 'rgba(54, 162, 235, 0.2)',
+    //                 'rgba(255, 206, 86, 0.2)',
+    //                 'rgba(75, 192, 192, 0.2)'
+    //             ],
+    //           }
+    //         ]
+    //       }
+    //     });
+    //   }
 }

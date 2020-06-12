@@ -100,8 +100,6 @@ export default {
   mounted() {
     this.getAllCountries();
     this.setDate();
-    // this.getDefaultData();
-    // this.createChart();
   }
 };
 </script>

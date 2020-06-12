@@ -1,7 +1,8 @@
 export const dataVue = {
   versionNumber: "2.6.7",
-  countriesData: null,
-  countriesList: null,
+  countriesList: [],
+  countiresData: [],
+  defaultCountry: "Myanmar",
   title: false,
   notFound: false,
   inWord: false,

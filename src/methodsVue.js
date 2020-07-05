@@ -55,7 +55,9 @@ export const methodsVue = {
         this.flagSrc = "#";
         this.loading = true;
         if (this.filterCountry(e.target.value) !== undefined) {
+           setTimeout(() => {
             this.setData(this.filterCountry(e.target.value));
+           }, 500);
             this.updateFlag(this.filterCountry(e.target.value));
         } else this.showNotFound();
     },

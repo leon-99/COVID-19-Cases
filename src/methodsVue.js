@@ -57,7 +57,7 @@ export const methodsVue = {
         if (this.filterCountry(e.target.value) !== undefined) {
            setTimeout(() => {
             this.setData(this.filterCountry(e.target.value));
-           }, 500);
+           }, 300);
             this.updateFlag(this.filterCountry(e.target.value));
         } else this.showNotFound();
     },

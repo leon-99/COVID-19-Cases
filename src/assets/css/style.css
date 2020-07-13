@@ -125,7 +125,7 @@ small {
 .search {
     display: block;
     width: 100%;
-    background: none;
+    background: #000;
     border: none;
     border-bottom: 0.5px solid white;
     margin: 20px 3px;

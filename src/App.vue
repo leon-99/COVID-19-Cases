@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <div class="container">
-      <div class="row search-row">
+      <div class="row search-row sticky-top">
         <div class="col-md-12 search-inner">
           <input
             type="text"

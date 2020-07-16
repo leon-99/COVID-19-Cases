@@ -100,5 +100,9 @@ export const methodsVue = {
         this.country = "";
         this.title = false;
         this.notFound = true;
+    },
+    setFooterYear() {
+        let date = new Date();
+        this.currentYear = date.getFullYear();
     }
 }

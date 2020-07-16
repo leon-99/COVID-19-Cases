@@ -58,9 +58,8 @@
           :loading="this.loading"
         />
       </div>
-      <!-- <SituationWorldwide /> -->
     </div>
-    <Footer :versionNumber="this.versionNumber" :profileHref="this.profileHref" />
+    <Footer :versionNumber="this.versionNumber" :profileHref="this.profileHref" :currentYear="this.currentYear"/>
   </div>
 </template>
 
@@ -100,6 +99,7 @@ export default {
   mounted() {
     this.getAllCountries();
     this.setDate();
+    this.setFooterYear();
   }
 };
 </script>
@@ -107,4 +107,5 @@ export default {
 <style lang="css">
 @import url("../node_modules/bootstrap/dist/css/bootstrap.min.css");
 @import url("./assets/css/style.css");
+@import './assets/css/animations.css'
 </style>

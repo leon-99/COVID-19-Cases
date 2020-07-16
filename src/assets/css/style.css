@@ -160,6 +160,13 @@ small {
     font-family: sans-serif;
 }
 
+.footer-heart {
+    width: 30px;
+    height: 30px;
+    vertical-align: middle;
+    margin-bottom: 5px;
+}
+
 @media only screen and (min-width: 768px) {
     .search {
         width: 50%

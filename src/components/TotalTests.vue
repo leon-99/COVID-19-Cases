@@ -3,9 +3,7 @@
     <h5 class="--letter-spacing">TOTAL TESTS</h5>
     <h5 class="mm-text">စုစုပေါင်း ဆေးစစ်မှုများ</h5>
     <h3 v-if="dataText" class="data-numbers">{{ totalTests }}</h3>
-    <div class="spinner-grow spinner-blue" role="status" v-if="loading">
-      <span class="sr-only">Loading...</span>
-    </div>
+    <i class="fas fa-cog  spinner-blue fa-2x mt-3 animation-spinner" v-if="loading"></i>
   </div>
 </template>
 

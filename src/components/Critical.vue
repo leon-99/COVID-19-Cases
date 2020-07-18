@@ -3,9 +3,7 @@
     <h5 class="--letter-spacing">CRITICAL PATIENTS</h5>
     <h5 class="mm-text">စိုးရိမ်ရအ‌ခြေအ‌နေရှိသော လူနာများ</h5>
     <h3 v-if="dataText" class="data-numbers">{{ critical }}</h3>
-    <div class="spinner-grow spinner-yellow" role="status" v-if="loading">
-      <span class="sr-only">Loading...</span>
-    </div>
+    <i class="fas fa-cog  spinner-yellow fa-2x mt-3 animation-spinner" v-if="loading"></i>
   </div>
 </template>
 

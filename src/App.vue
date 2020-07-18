@@ -25,9 +25,7 @@
             <span v-if="inWord">in</span> &nbsp;
             <span id="country-text">{{ country }}</span>
           </h3>
-          <div class="spinner-grow spinner-gray" role="status" v-if="loading">
-            <span class="sr-only">Loading...</span>
-          </div>
+         <i class="fas fa-cog  spinner-gray fa-2x mt-3 animation-spinner" v-if="loading"></i>
           <img :src="flagSrc" alt class="pb-2" v-if="dataText" />
           <h6>{{ date }}</h6>
         </div>

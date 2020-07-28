@@ -30,6 +30,7 @@ export const methodsVue = {
     filterCountry(c) {
         let SEARCHED_COUNTRY;
         if (
+            c === "usa" ||
             c === "America" ||
             c === "america" ||
             c === "Us" ||
@@ -38,16 +39,21 @@ export const methodsVue = {
             c === "United States" ||
             c === "United states" ||
             c === "united states"
-        ) SEARCHED_COUNTRY = this.countriesData.find(i => i.country === "Usa");
-        else if (
+        ) {
+            SEARCHED_COUNTRY = this.countriesData.find(i => i.country === "USA");
+        } else if (
             c === "korea" ||
             c === "Korea" ||
             c === "South Korea" ||
             c === "south korea" ||
             c === "South korea"
-        ) SEARCHED_COUNTRY = this.countriesData.find(i => i.country === "S. Korea");
-        else SEARCHED_COUNTRY = this.countriesData.find(i => i.country === c);
+        ) {
+            SEARCHED_COUNTRY = this.countriesData.find(i => i.country === "S. Korea");
+        } else {
+            SEARCHED_COUNTRY = this.countriesData.find(i => i.country === c);
+        }
         return SEARCHED_COUNTRY;
+
     },
     // get searched data
     async getSearchedData(e) {
@@ -55,9 +61,9 @@ export const methodsVue = {
         this.flagSrc = "#";
         this.loading = true;
         if (this.filterCountry(e.target.value) !== undefined) {
-           setTimeout(() => {
-            this.setData(this.filterCountry(e.target.value));
-           }, 300);
+            setTimeout(() => {
+                this.setData(this.filterCountry(e.target.value));
+            }, 300);
             this.updateFlag(this.filterCountry(e.target.value));
         } else this.showNotFound();
     },

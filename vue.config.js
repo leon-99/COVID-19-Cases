@@ -68,6 +68,18 @@ module.exports = {
               "type": "image/png"
             }
           ]
+    },
+    workboxOptions: {
+      runtimeCaching: [{
+        urlPattern: new RegExp('^https://coronavirus-19-api.herokuapp.com/'),
+        handler: 'networkFirst',
+        options: {
+          cacheName: 'covid-data',
+          cacheableResponse: {
+            statuses: [0, 200],
+          },
+        },
+      }]
     }
   }
 }

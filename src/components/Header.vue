@@ -1,7 +1,7 @@
 <template>
   <div id="nav" class="nav">
-    <router-link to="/" class="search-link">SEARCH</router-link>
-    <router-link to="/all" class="list-link">ALL</router-link>
+    <router-link to="/" class="search-link"><i class="fas fa-search"></i></router-link>
+    <router-link to="/all" class="list-link"><i class="fas fa-bars"></i></router-link>
   </div>
 </template>
 

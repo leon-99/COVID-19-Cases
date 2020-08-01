@@ -14,14 +14,20 @@
     </div>
     <div class="row">
       <div class="col-md-12 text-center" v-if="loading">
-         <i class="fas fa-cog fa-2x mt-3 animation-spinner"></i>
+        <i class="fas fa-cog fa-2x mt-3 animation-spinner"></i>
       </div>
       <div class="col-md-12" v-if="dataTexts">
-        <div v-for="country in countryData" :key="countryData.indexOf(country)" class="mb-4 d-flex justify-content-around">
+        <div
+          v-for="country in countryData"
+          :key="countryData.indexOf(country)"
+          class="mb-4 d-flex flex-column align-items-center"
+        >
           <p class="country-name">{{ country.country }}</p>
-          <p class="ml-1 cases-text">{{ !country.cases ? 'N/A' : country.cases }}</p>
-          <p class="ml-1 recovered-text">{{ !country.recovered ? 'N/A' : country.recovered }}</p>
-          <p class="ml-1 deaths-text">{{ !country.deaths ? 'N/A' : country.deaths  }}</p>
+          <div class="d-flex mb-3 justify-content-between">
+            <p class="ml-5 cases-text">{{ !country.cases ? 'N/A' : country.cases }}</p>
+            <p class="ml-5 recovered-text">{{ !country.recovered ? 'N/A' : country.recovered }}</p>
+            <p class="ml-5 deaths-text">{{ !country.deaths ? 'N/A' : country.deaths }}</p>
+          </div>
         </div>
       </div>
     </div>
@@ -33,7 +39,7 @@ export default {
   name: "All",
   data() {
     return {
-      date: '',
+      date: "",
       loading: false,
       dataTexts: false,
       countryData: null
@@ -41,25 +47,25 @@ export default {
   },
   methods: {
     setTime() {
-    let months = [
-      "January",
-      "February",
-      "March",
-      "April",
-      "May",
-      "June",
-      "July",
-      "August",
-      "September",
-      "October",
-      "November",
-      "December"
-    ];
-    let date = new Date();
-    this.date = `${
-      months[date.getMonth()]
-    } ${date.getDate()}, ${date.getFullYear()}`;
-  },
+      let months = [
+        "January",
+        "February",
+        "March",
+        "April",
+        "May",
+        "June",
+        "July",
+        "August",
+        "September",
+        "October",
+        "November",
+        "December"
+      ];
+      let date = new Date();
+      this.date = `${
+        months[date.getMonth()]
+      } ${date.getDate()}, ${date.getFullYear()}`;
+    },
     async getData() {
       this.dataTexts = false;
       this.loading = true;
@@ -83,8 +89,7 @@ export default {
 </script>
 
 <style lang="css" scoped>
-@import '../assets/css/animations.css';
-
+@import "../assets/css/animations.css";
 
 .fa-cog {
   color: gray;

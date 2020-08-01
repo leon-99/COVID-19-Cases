@@ -45,6 +45,7 @@ export const searchMethodsVue = {
   filterCountry(c) {
     let SEARCHED_COUNTRY;
     if (
+      c === "Usa" ||
       c === "usa" ||
       c === "America" ||
       c === "america" ||

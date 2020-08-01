@@ -24,7 +24,8 @@ export default {
   border: solid rgba(255, 0, 0, 0.7) 1px;
   color: rgba(255, 0, 0, 0.7);
   padding: 3px 10px;
-  margin-right: 30px;
+  margin-right: 15px;
+  margin-left: 15px;
   transition: all linear 0.3s;
 }
 

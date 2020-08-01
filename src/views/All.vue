@@ -12,23 +12,23 @@
         <div class="gray-block d-inline-block mr-4"></div>
       </div>
     </div>
-    <div class="row">
-      <div class="col-md-12 text-center" v-if="loading">
-        <i class="fas fa-cog fa-2x mt-3 animation-spinner"></i>
-      </div>
-      <div class="col-md-12" v-if="dataTexts">
-        <div
-          v-for="country in countryData"
-          :key="countryData.indexOf(country)"
-          class="mb-4 d-flex flex-column align-items-center"
-        >
-          <p class="country-name">{{ country.country }}</p>
-          <div class="d-flex mb-3 justify-content-between">
-            <p class="ml-5 cases-text">{{ !country.cases ? 'N/A' : country.cases }}</p>
-            <p class="ml-5 recovered-text">{{ !country.recovered ? 'N/A' : country.recovered }}</p>
-            <p class="ml-5 deaths-text">{{ !country.deaths ? 'N/A' : country.deaths }}</p>
-          </div>
+    <div class="row" v-if="dataTexts">
+      <div
+        class="col-md-4 col-12 mb-4 d-flex flex-column align-items-center country-boxes"
+        v-for="country in countryData"
+        :key="countryData.indexOf(country)"
+      >
+        <h5 class="country-name mb-3">{{ country.country }}</h5>
+        <div class="d-flex mb-3">
+          <h5 class="cases-text">{{ !country.cases ? 'N/A' : country.cases }}</h5>
+          <h5 class="recovered-text mx-5">{{ !country.recovered ? 'N/A' : country.recovered }}</h5>
+          <h5 class="deaths-text">{{ !country.deaths ? 'N/A' : country.deaths }}</h5>
         </div>
+      </div>
+    </div>
+    <div class="row" v-if="loading">
+      <div class="col-md-12 text-center">
+        <i class="fas fa-cog fa-2x mt-3 animation-spinner"></i>
       </div>
     </div>
   </div>
@@ -87,53 +87,3 @@ export default {
   }
 };
 </script>
-
-<style lang="css" scoped>
-@import "../assets/css/animations.css";
-
-.fa-cog {
-  color: gray;
-}
-
-.main {
-  min-height: 100vh;
-}
-
-td {
-  padding: 10px;
-  border: solid 1px white;
-}
-
-.red-block {
-  vertical-align: middle;
-  width: 10px;
-  height: 10px;
-  background-color: red;
-}
-
-.gray-block {
-  vertical-align: middle;
-  width: 10px;
-  height: 10px;
-  background-color: gray;
-}
-
-.green-block {
-  vertical-align: middle;
-  width: 10px;
-  height: 10px;
-  background-color: greenyellow;
-}
-
-.cases-text {
-  color: red;
-}
-
-.deaths-text {
-  color: gray;
-}
-
-.recovered-text {
-  color: yellowgreen;
-}
-</style>

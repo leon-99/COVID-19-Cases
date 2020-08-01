@@ -17,7 +17,7 @@
           </datalist>
         </div>
       </div>
-      <div class="row row-1">
+      <div class="row row-1 text-center">
         <div class="col-md-12">
           <h3 class="--letter-spacing">
             <span v-if="title">COVID-19 Cases</span> &nbsp;
@@ -30,7 +30,7 @@
           <h6>{{ date }}</h6>
         </div>
       </div>
-      <div class="row row-2">
+      <div class="row row-2 pt-4">
         <ConfirmedCases :cases="this.cases" :dataText="this.dataText" :loading="this.loading" />
         <TodayCases
           :todayCases="this.todayCases"

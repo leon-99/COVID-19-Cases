@@ -36,6 +36,6 @@ export default {
 
 .router-link-exact-active {
   color: white;
-  background-color: rgba(255, 0, 0, 0.7);
+  background-color: rgba(255, 0, 0, 0.3);
 }
 </style>

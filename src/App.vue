@@ -44,10 +44,13 @@ export default {
 </script>
 
 <style lang="css">
-@import url("../node_modules/bootstrap/dist/css/bootstrap.min.css");
-@import url("./assets/css/style.css");
+@import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+@import './assets/css/styles.css';
+@import './assets/css/all.css';
 @import "./assets/css/animations.css";
 
+
+/* router view transitions */
 .fade-enter-active,
 .fade-leave-active {
   transition-duration: 0.3s;

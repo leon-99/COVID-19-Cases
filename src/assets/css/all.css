@@ -1,0 +1,61 @@
+.fa-cog {
+    color: gray;
+  }
+  
+  .main {
+    min-height: 100vh;
+  }
+  
+  td {
+    padding: 10px;
+    border: solid 1px white;
+  }
+  
+  .red-block {
+    vertical-align: middle;
+    width: 10px;
+    height: 10px;
+    background-color: red;
+  }
+  
+  .gray-block {
+    vertical-align: middle;
+    width: 10px;
+    height: 10px;
+    background-color: gray;
+  }
+  
+  .green-block {
+    vertical-align: middle;
+    width: 10px;
+    height: 10px;
+    background-color: greenyellow;
+  }
+  
+  .cases-text {
+    color: red;
+  }
+  
+  .deaths-text {
+    color: gray;
+  }
+  
+  .recovered-text {
+    color: yellowgreen;
+  }
+  
+  .country-boxes {
+    border:  solid rgba(255, 255, 255, 0.3) 1px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+  
+  @media only screen and (max-width: 768px) {
+    .recovered-text {
+      margin-left: 10px !important;
+      margin-right: 10px !important;
+    }
+    .country-boxes {
+      border: none;
+    }
+  }

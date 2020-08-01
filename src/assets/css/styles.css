@@ -47,12 +47,7 @@ body {
     min-height: 100vh;
 }
 
-.row-1 {
-    text-align: center;
-}
-
 .row-2 {
-    padding-top: 30px;
     min-height: 100vh;
 }
 
@@ -66,14 +61,6 @@ body {
 
 h3 {
     padding-top: 10px;
-}
-
-footer {
-    text-align: center;
-    padding-top: 30px;
-    display: flex !important;
-    flex-direction: column;
-    justify-content: center;
 }
 
 small {
@@ -158,13 +145,6 @@ small {
     font-weight: bolder;
     letter-spacing: 2px;
     font-family: sans-serif;
-}
-
-.footer-heart {
-    width: 30px;
-    height: 30px;
-    vertical-align: middle;
-    margin-bottom: 5px;
 }
 
 @media only screen and (min-width: 768px) {

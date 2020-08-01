@@ -1,6 +1,4 @@
-export const dataVue = {
-  versionNumber: "2.6.7",
-  currentYear: '',
+export const searchDataVue = {
   countriesList: [],
   countiresData: [],
   defaultCountry: "Myanmar",
@@ -19,6 +17,5 @@ export const dataVue = {
   todayDeaths: "",
   totalTests: "",
   critical: "",
-  flagSrc: "",
-  profileHref: "https://www.facebook.com/leonzifer"
+  flagSrc: ""
 };

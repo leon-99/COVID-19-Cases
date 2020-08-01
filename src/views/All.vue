@@ -18,7 +18,9 @@
         v-for="country in countryData"
         :key="countryData.indexOf(country)"
       >
-        <h5 class="country-name mb-3">{{ country.country }}</h5>
+        <h5
+          class="country-name mb-3"
+        >{{ country.country === 'World' ? 'Worldwide' : country.country}}</h5>
         <div class="d-flex mb-3">
           <h5 class="cases-text">{{ !country.cases ? 'N/A' : country.cases }}</h5>
           <h5 class="recovered-text mx-5">{{ !country.recovered ? 'N/A' : country.recovered }}</h5>

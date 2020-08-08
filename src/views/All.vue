@@ -21,9 +21,9 @@
         <h5
           class="country-name mb-3 --letter-spacing"
         >{{ country.country === 'World' ? 'Worldwide' : country.country}}</h5>
-         <h5 class="cases-text --letter-spacing">{{ !country.cases ? 'N/A' : country.cases }}</h5>
-          <h5 class="recovered-text mx-5 --letter-spacing">{{ !country.recovered ? 'N/A' : country.recovered }}</h5>
-          <h5 class="deaths-text --letter-spacing">{{ !country.deaths ? 'N/A' : country.deaths }}</h5>
+         <h5 class="cases-text --letter-spacing font-weight-bold">{{ !country.cases ? 'N/A' : country.cases }}</h5>
+          <h5 class="recovered-text mx-5 --letter-spacing font-weight-bold">{{ !country.recovered ? 'N/A' : country.recovered }}</h5>
+          <h5 class="deaths-text --letter-spacing font-weight-bold">{{ !country.deaths ? 'N/A' : country.deaths }}</h5>
       </div>
     </div>
     <div class="row" v-if="loading">

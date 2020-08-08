@@ -19,13 +19,11 @@
         :key="countryData.indexOf(country)"
       >
         <h5
-          class="country-name mb-3"
+          class="country-name mb-3 --letter-spacing"
         >{{ country.country === 'World' ? 'Worldwide' : country.country}}</h5>
-        <div class="d-flex mb-3">
-          <h5 class="cases-text">{{ !country.cases ? 'N/A' : country.cases }}</h5>
-          <h5 class="recovered-text mx-5">{{ !country.recovered ? 'N/A' : country.recovered }}</h5>
-          <h5 class="deaths-text">{{ !country.deaths ? 'N/A' : country.deaths }}</h5>
-        </div>
+         <h5 class="cases-text --letter-spacing">{{ !country.cases ? 'N/A' : country.cases }}</h5>
+          <h5 class="recovered-text mx-5 --letter-spacing">{{ !country.recovered ? 'N/A' : country.recovered }}</h5>
+          <h5 class="deaths-text --letter-spacing">{{ !country.deaths ? 'N/A' : country.deaths }}</h5>
       </div>
     </div>
     <div class="row" v-if="loading">
